@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-// import Home from '../views/Home.vue'
 import IntroScreen from '../components/introScreen/IntroScreen'
 import WhereTo from '../components/whereTo/WhereTo'
+import Sale from '../components/sale/Sale'
 
 Vue.use(VueRouter)
 
@@ -16,6 +16,11 @@ const routes = [
     path: '/whereTo',
     name: 'WhereTo',
     component: WhereTo
+  },
+  {
+    path: '/sale',
+    name: 'Sale',
+    component: Sale
   }
 ]
 

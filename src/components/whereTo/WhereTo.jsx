@@ -9,14 +9,21 @@ const WhereTo = Vue.extend({
         { id: 0, path: 'Sale'}, 
         { id: 1, path: 'Estinment' },
         { id: 2, path: 'Sale2'}, 
-        { id: 3, path: 'Estinment2' },
+        { id: 3, path: 'Estinment2' }
       ]
+    }
+  },
+  methods: {
+    handleRouteTo(passPath) {
+      this.$router.push({
+        path: passPath.toLocaleLowerCase()
+      })
     }
   },
   render() {
     let renderWhereToList = this.pathString.map((value) => {
       return (
-        <button key={value.id}>{value.path}</button>
+        <button key={value.id} onClick={() => this.handleRouteTo(value.path)}>{value.path}</button>
       )
     })
 

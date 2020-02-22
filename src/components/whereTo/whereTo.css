@@ -1,5 +1,4 @@
 .whereTo_container {
-  /* border: 1px solid red; */
   height: calc(100vh);
   display: flex;
   flex-direction: column;
@@ -15,18 +14,17 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 2px solid red;
-  height: 20rem;
-  width: 20rem;
-}
-.whereTo_container > div > button {
-  /* height: 5rem; */
-  /* width: 10rem; */
-  /* border-radius: 10px; */
-  /* border-style: none; */
-  font-size: 18px;
+  height: 10rem;
+  width: 30rem;
 }
 
+.whereTo_container > div > button {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 10px;
+  /* border-style: none; */
+  /* font-size: 18px; */
+}
 
 .whereTo_container > div > button:hover {
   cursor: pointer;
