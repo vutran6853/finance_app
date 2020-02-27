@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import IntroScreen from '../components/introScreen/IntroScreen'
 import WhereTo from '../components/whereTo/WhereTo'
 import Sale from '../components/sale/Sale'
+// import Sale from '../components/sale/Sale.vue'
 
 Vue.use(VueRouter)
 

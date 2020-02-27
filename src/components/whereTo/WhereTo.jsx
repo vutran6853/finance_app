@@ -23,7 +23,7 @@ const WhereTo = Vue.extend({
   render() {
     let renderWhereToList = this.pathString.map((value) => {
       return (
-        <button key={value.id} onClick={() => this.handleRouteTo(value.path)}>{value.path}</button>
+        <button key={value.id} onclick={() => this.handleRouteTo(value.path)}>{value.path}</button>
       )
     })
 

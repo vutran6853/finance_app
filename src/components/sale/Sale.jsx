@@ -1,51 +1,57 @@
 import Vue from 'vue'
 import ShowMeTheMoney from './showMeTheMoney/ShowMeTheMoney'
-
-
 import './sale.css'
 
 const Sale = Vue.extend({
   name: 'Sale',
   data() {
     return {
-      current_price: '',
-      discount_amount: '',
-      total_amount: 0,
+      currentPrice: '',
+      discountAmount: '',
+      totalAmount: 0,
       isShowFinalAmount: false
     }
   },
   methods: {
     handleSetOrgPrice(event) {
-      this.current_price = parseInt(event.target.value)
+      this.currentPrice = parseInt(event.target.value)
     },
     handleSetDiscountPrice(event) {
-      this.discount_amount = parseInt(event.target.value)
+      console.log('event.target.value ===', event.target.value)
+      this.discountAmount = parseInt(event.target.value)
     },
     handleComputed() {
-      if (this.current_price !== '' && this.discount_amount !== '') {
-        let discount = this.discount_amount / 100
-        let saleDiscount = discount * this.current_price
-        let total = this.current_price - saleDiscount
-        this.total_amount = total
+      if (this.currentPrice !== '' && this.discountAmount !== '') {
+        let discount = this.discountAmount / 100
+        let saleDiscount = discount * this.currentPrice
+        let total = this.currentPrice - saleDiscount
+        this.totalAmount = total
         this.isShowFinalAmount = true
       } else {
         console.log('TODO: MESSAGE USER INVAILD')
       }
     },
     handleResetState() {
-      if (this.current_price !== '') {
-        this.current_price = ''
-        this.discount_amount = ''
-        this.total_amount = 0
+      if (this.currentPrice !== '') {
+        this.currentPrice = ''
+        this.discountAmount = ''
+        this.totalAmount = 0
         this.isShowFinalAmount = false
+      }
+      return null
+    },
+    handleIfKeyEnter(event) {
+      if (event.key === 'Enter') {
+        this.handleComputed()
       }
       return null
     }
   },
+ 
   computed: {
     showCurrentPrice: {
       get() {
-        return this.current_price
+        return this.currentPrice
       }
     }
   },
@@ -57,25 +63,26 @@ const Sale = Vue.extend({
           <div class="sale_form_items">
             <p>Normal Price:</p>
             <input 
-              name="current_price"
+              name="currentPrice"
               type="number"
-              placeholder="normal price..." 
+              placeholder="Enter price..." 
               value={this.showCurrentPrice} 
-              onChange={this.handleSetOrgPrice} 
-              onClick={this.handleResetState}/>
+              oninput={this.handleSetOrgPrice}
+              onclick={this.handleResetState}/>
           </div>
           <div class="sale_form_items">
             <p>Sale or Discount:</p>
-            <input 
-              name="discount_amount"
+            <input
+              name="discountAmount"
               type="number"
-              placeholder="sale or discount..." 
-              value={this.discount_amount} 
-              onChange={this.handleSetDiscountPrice}/>
+              placeholder="Enter sale or percent..." 
+              value={this.discountAmount} 
+              oninput={this.handleSetDiscountPrice}
+              onkeypress={this.handleIfKeyEnter}/>
           </div>
-          <button onClick={this.handleComputed}>Sumit</button>
+          <button onclick={this.handleComputed}>Submit</button>
         </div>
-        <ShowMeTheMoney isShowFinalAmount={this.isShowFinalAmount} total_amount={this.total_amount} />
+        <ShowMeTheMoney isShowFinalAmount={this.isShowFinalAmount} totalAmount={this.totalAmount} />
       </div>
     )
   }

@@ -1,5 +1,6 @@
 .whereTo_container {
-  height: calc(100vh);
+  /* height: calc(100vh); */
+  min-height: calc(100vh - 20px);
   display: flex;
   flex-direction: column;
   justify-content: center;

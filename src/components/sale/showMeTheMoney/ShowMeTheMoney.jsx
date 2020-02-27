@@ -7,7 +7,7 @@ const ShowMeTheMoney = Vue.extend({
       type: Boolean,
       required: true
     },
-    total_amount: {
+    totalAmount: {
       type: Number,
       required: true
     }
@@ -15,7 +15,7 @@ const ShowMeTheMoney = Vue.extend({
   render() {
     let renderShowFinalResult = this.isShowFinalAmount ? (
       <div>
-        <p>THE FINAL AMOUNT IS {this.total_amount}</p>
+        <p>The final sale price is ${this.totalAmount}</p>
       </div>
     ) : null
 

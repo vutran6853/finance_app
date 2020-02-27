@@ -14,7 +14,7 @@ const IntroScreen = Vue.extend({
     return (
       <div class="introScreen_container">
         <h1>Welcome to Finance</h1>
-        <button onClick={this.handleRouteTo}>Start</button>
+        <button onclick={this.handleRouteTo}>Start</button>
       </div>
     )
   }

@@ -1,6 +1,6 @@
 .introScreen_container {
   /* border: 1px solid red; */
-  height: calc(100vh);
+  min-height: calc(100vh - 20px);
   display: flex;
   flex-direction: column;
   justify-content: center;
