@@ -61,7 +61,7 @@ const Sale = Vue.extend({
         {/* <Navbar /> */}
         <div class="sale_form_container">
           <div class="sale_form_items">
-            <p>Normal Price:</p>
+            <p>Price:</p>
             <input 
               name="currentPrice"
               type="number"

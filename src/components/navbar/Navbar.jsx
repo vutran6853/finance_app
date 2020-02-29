@@ -19,7 +19,9 @@ const Navbar = Vue.extend({
   },
   render() {
     return (
-      <button style={{display: 'flex', alignItems: 'right'}} onClick={this.handleRoutToHome}>
+      <button 
+        style={{display: 'flex', alignItems: 'right', height: '50px', width: '100px', fontSize: '16px', justifyContent: 'center'}} 
+        onClick={this.handleRoutToHome}>
         Home
       </button>
     )

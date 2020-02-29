@@ -12,10 +12,19 @@ const ShowMeTheMoney = Vue.extend({
       required: true
     }
   },
+  methods: {
+    formatter(passAmount) {
+      let amount = new Intl.NumberFormat('en', {
+        style: 'currency',
+        currency: 'USD'
+      })
+      return amount.format(passAmount)
+    }
+  },
   render() {
     let renderShowFinalResult = this.isShowFinalAmount ? (
       <div>
-        <p>The final sale price is ${this.totalAmount}</p>
+        <p>The final sale price is {this.formatter(this.totalAmount)}</p>
       </div>
     ) : null
 
