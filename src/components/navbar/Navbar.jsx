@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import './navbar.css'
 
 const Navbar = Vue.extend({
   name: 'Navbar',
@@ -19,11 +20,13 @@ const Navbar = Vue.extend({
   },
   render() {
     return (
-      <button 
-        style={{display: 'flex', alignItems: 'right', height: '50px', width: '100px', fontSize: '16px', justifyContent: 'center'}} 
-        onClick={this.handleRoutToHome}>
-        Home
-      </button>
+      <nav style={{display: 'flex', height: '50px', justifyContent: 'center'}} >
+        <button
+         
+          onClick={this.handleRoutToHome}>
+          Home
+        </button>
+      </nav>
     )
   }
 })

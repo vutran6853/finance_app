@@ -22,9 +22,9 @@ const ShowMeTheMoney = Vue.extend({
     }
   },
   render() {
-    let renderShowFinalResult = this.isShowFinalAmount ? (
+    let renderShowFinalResult = this.$props.isShowFinalAmount ? (
       <div>
-        <p>The final sale price is {this.formatter(this.totalAmount)}</p>
+        <p>The final sale price is (included tax) <strong style={{color: 'red'}}>{this.formatter(this.$props.totalAmount)}</strong></p>
       </div>
     ) : null
 

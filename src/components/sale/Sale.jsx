@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import ShowMeTheMoney from './showMeTheMoney/ShowMeTheMoney'
+import stateSaleTax from '../../helpers/localState'
 import './sale.css'
 
 const Sale = Vue.extend({
@@ -9,7 +10,9 @@ const Sale = Vue.extend({
       currentPrice: '',
       discountAmount: '',
       totalAmount: 0,
-      isShowFinalAmount: false
+      isShowFinalAmount: false,
+      state: '',
+      saleTax: ''
     }
   },
   methods: {
@@ -17,15 +20,15 @@ const Sale = Vue.extend({
       this.currentPrice = parseInt(event.target.value)
     },
     handleSetDiscountPrice(event) {
-      console.log('event.target.value ===', event.target.value)
       this.discountAmount = parseInt(event.target.value)
     },
     handleComputed() {
-      if (this.currentPrice !== '' && this.discountAmount !== '') {
+      if (this.currentPrice !== '' && this.saleTax !== '') {
+        let tax = parseFloat(this.saleTax) / 100.0
         let discount = this.discountAmount / 100
-        let saleDiscount = discount * this.currentPrice
-        let total = this.currentPrice - saleDiscount
-        this.totalAmount = total
+        let total = this.currentPrice - (this.currentPrice * discount)
+        let sumTotal = total * tax
+        this.totalAmount = total + sumTotal
         this.isShowFinalAmount = true
       } else {
         console.log('TODO: MESSAGE USER INVAILD')
@@ -45,6 +48,13 @@ const Sale = Vue.extend({
         this.handleComputed()
       }
       return null
+    },
+    handleSetStateTax(event) {
+      if (event.target.value !== '----') {
+        this.saleTax = event.target.value
+      } else {
+        this.saleTax = ''
+      }
     }
   },
  
@@ -61,6 +71,20 @@ const Sale = Vue.extend({
         {/* <Navbar /> */}
         <div class="sale_form_container">
           <div class="sale_form_items">
+            <p>State:</p>
+            <div style="font-size: 20px">
+              <select onchange={this.handleSetStateTax}>
+                <option defaultValue="---">----</option>
+                {stateSaleTax.map((value) => {
+                  return (
+                    <option key={value.id} value={value.sale}>{value.state}</option>
+                  )
+                })}
+              </select>
+              {this.saleTax !== '' ? <span>{this.saleTax}%</span> : null}
+            </div>
+          </div>
+          <div class="sale_form_items">
             <p>Price:</p>
             <input 
               name="currentPrice"
@@ -68,10 +92,11 @@ const Sale = Vue.extend({
               placeholder="Enter price..." 
               value={this.showCurrentPrice} 
               oninput={this.handleSetOrgPrice}
-              onclick={this.handleResetState}/>
+              onclick={this.handleResetState}
+              onkeypress={this.handleIfKeyEnter}/>
           </div>
           <div class="sale_form_items">
-            <p>Sale or Discount:</p>
+            <p>Discount:</p>
             <input
               name="discountAmount"
               type="number"

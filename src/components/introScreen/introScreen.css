@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 
 .introScreen_container > h1 {
@@ -17,10 +18,17 @@
   border-radius: 10px;
   border-style: none;
   font-size: 18px;
+  border: 1px solid lightskyblue;
 }
 
 
 .introScreen_container > button:hover {
   cursor: pointer;
   background-color: aqua;
+}
+
+@media only screen and (max-width: 600px) {
+  .introScreen_container {
+    min-height: calc(100vh - 250px);
+  }
 }

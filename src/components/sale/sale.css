@@ -1,5 +1,4 @@
 .sale_container {
-  /* border: 2px solid black; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,9 +8,8 @@
 }
 
 .sale_form_container {
-  /* border: 2px solid red; */
   height: 20rem;
-  width: 20rem;
+  /* width: 20rem; */
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -31,6 +29,12 @@
 
 .sale_form_items > input {
   height: 2rem;
-  width: 100%;
   font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 600px) {
+  .sale_container {
+    padding-top: 1rem;
+    /* font-size: 2rem; */
+  }
 }
